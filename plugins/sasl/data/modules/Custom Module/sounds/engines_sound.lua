@@ -73,7 +73,7 @@ defineProperty("thrust_R", globalProperty("sim/cockpit2/engine/indicators/thrust
 defineProperty("snd_rho", globalPropertyf("sim/weather/rho")) -- air density, for the blast layers
 defineProperty("snd_knd_1", globalPropertyf("tu154b2/custom/engines/knd_1")) -- N1 state published by engine_gauges (for fan rattle)
 defineProperty("snd_knd_3", globalPropertyf("tu154b2/custom/engines/knd_3"))
--- N1 (КНД) gauge values in %, used by the FS2004 soundset experiment below
+-- N1 (КНД) gauge values in %, used by the N1 idle layer below
 defineProperty("snd_n1_1", globalPropertyf("tu154b2/custom/gauges/engine/rpm_low_1"))
 defineProperty("snd_n1_2", globalPropertyf("tu154b2/custom/gauges/engine/rpm_low_2"))
 defineProperty("snd_n1_3", globalPropertyf("tu154b2/custom/gauges/engine/rpm_low_3"))
@@ -192,84 +192,6 @@ local out_apu_right = loadSample(moduleDirectory .. '/Custom Sounds/engines/out_
 local out_reverse_L = loadSample(moduleDirectory .. '/Custom Sounds/engines/out_reverse_left.wav')
 local out_reverse_R = loadSample(moduleDirectory .. '/Custom Sounds/engines/out_reverse_right.wav')
 local inn_reverse = loadSample(moduleDirectory .. '/Custom Sounds/engines/inn_reverse.wav')
-
--- =====================================================================================
--- FS2004 SOUNDSET EXPERIMENT (2026-09-24)
--- Tu-154M D-30KU soundset by Mike Maarse / Dmitry Kolesnik (2005), layer curves taken 1:1
--- from its sound.cfg. Each layer = one recorded sample with its own volume curve (vparams)
--- and pitch curve (rparams), crossfaded by RPM. COMBUSTION layers follow N1, JET_WHINE
--- layers follow N2 (RPM as 0..1 fraction of real %).
--- When ON, these replace the engine running sounds (inn_middle, out_idle, out_behind,
--- out_high, blast). Starters, APU, reverse, fan rattle and de-ice are NOT touched.
--- Set FS9_ENGINE_SOUNDS = false to go back to the previous engine sounds exactly.
--- Engine 1 = "A" samples (ban/xban), engine 3 = "B" samples (bbn/xbbn),
--- engine 2 = "A" samples slightly detuned so it doesn't phase with engine 1.
--- =====================================================================================
-FS9_ENGINE_SOUNDS = false  -- 2026-09-24: experiment switched OFF (did not sound good)
-FS9_INN_LEVEL   = 600    -- cockpit level at 100% layer volume (old inn_middle used 700)
-FS9_EXT_LEVEL   = 1000   -- outside level at 100% layer volume (old out_idle used 1200)
-FS9_ENG_SCALE   = 0.816  -- FS9 mixed 2 engines, we have 3: sqrt(2/3) keeps total loudness
-FS9_ENG2_DETUNE = 1.015  -- engine 2 pitch offset
-FS9_WHINE_KEY   = "n2"   -- "n2" (default) or "n1" if the whine should follow N1 instead
-
--- 2026-09-24: the cockpit set (ban/bbn) was dropped for quality -- the outside-recorded xban/xbbn
--- samples now play in BOTH views, each with its own original sound.cfg curves. Only the level
--- and placement change with the view; Doppler is applied outside only.
--- {sample A, sample B, viewpoint (kept for reference), key, rparams, vparams}
-fs9_layers = {
-	-- outside-recorded samples, used in BOTH cockpit and outside view (2026-09-24 swap)
-	{"xban11","xbbn11",2,"whine",{0.397351,0.93617,0.79691,1.106383},{0.005,0, 0.285,15.957, 0.401766,17.021276, 0.479029,30.851065, 0.611479,36.170212, 0.710817,11.702127, 0.8,0}},
-	{"xban12","xbbn12",2,"whine",{0.5,0.9,0.85,1.2},{0.5,0, 0.580574,12.765958, 0.635762,38.297871, 0.699779,41.489361, 0.775,22.34, 0.85,0}},
-	{"xban13","xbbn13",2,"whine",{0.65,0.8,1.0,1.0},{0.55,0, 0.65,6.383, 0.717,42.553, 0.77,47.872, 1.0,10}},
-	{"xban14","xbbn14",2,"whine",{0.7,0.8,1.0,1.0},{0.7,0, 0.788079,50, 1.0,100}},
-	{"xban21","xbbn21",2,"comb",{0.625,0.975,0.8,1.5},{0,0, 0.298,11.702, 0.419,23.404, 0.494,59.574, 0.687,62.766, 0.751,7.447, 0.8,0}},
-	{"xban22","xbbn22",2,"comb",{0.675,0.9,0.85,2.0},{0.6,0, 0.68,12.766, 0.711,62.766, 0.737,63.83, 0.781,11.702, 0.85,0}},
-	{"xban23","xbbn23",2,"comb",{0.75,0.8,1.0,1.25},{0.7,0, 0.744,22.34, 0.759,63.83, 0.865,70.213, 0.918,24.468, 1.0,5}},
-	{"xban24","xbbn24",2,"comb",{0.8,0.8,1.0,1.0},{0.8,0, 0.883002,71.276596, 1.0,100}},
-	{"XBAN2T","XBBN2T",2,"comb",{0,1,0,1},{0,0, 0.238,86.4, 0.998,100, 1.0,100.6}},
-}
-
--- FS9 rparams: rate held below/above the two points, linear in between
-function fs9_rate(r, x)
-	if r[3] <= r[1] then return r[2] end
-	if x <= r[1] then return r[2] end
-	if x >= r[3] then return r[4] end
-	return r[2] + (r[4] - r[2]) * (x - r[1]) / (r[3] - r[1])
-end
-
--- FS9 vparams: (rpm, volume %) pairs, linear in between, held outside
-function fs9_vol(v, x)
-	local n = #v / 2
-	if x <= v[1] then return v[2] end
-	for i = 1, n - 1 do
-		local x0, y0, x1, y1 = v[2*i-1], v[2*i], v[2*i+1], v[2*i+2]
-		if x <= x1 then
-			if x1 <= x0 then return y1 end
-			return y0 + (y1 - y0) * (x - x0) / (x1 - x0)
-		end
-	end
-	return v[2*n]
-end
-
-function fs9_ok(smp)
-	return smp ~= nil and smp ~= 0
-end
-
-fs9_snd = {{}, {}, {}}
-if FS9_ENGINE_SOUNDS then
-	for e = 1, 3 do
-		for i, L in ipairs(fs9_layers) do
-			local name = L[1]
-			if e == 3 then name = L[2] end
-			local smp = loadSample(moduleDirectory .. '/Custom Sounds/engines/' .. name .. '.wav')
-			fs9_snd[e][i] = smp
-			if fs9_ok(smp) then
-				playSample(smp, true)
-				setSampleGain(smp, 0)
-			end
-		end
-	end
-end
 
 -- N1 IDLE LAYER (2026-09-25)
 -- A second copy of the idle sounds (cockpit inn_middle, outside out_idle incl. open doors/windows),
@@ -699,88 +621,6 @@ end
 local cam_dist_last = 0
 local deice_coef = 0
 --local refuel_coef = 0
-
--- FS2004 soundset experiment: runs at the END of update(), so it overrides the old engine
--- running layers (mutes them) and drives the FS9 layers. See FS9_ENGINE_SOUNDS above.
-function fs9_update(external, n2_1, n2_2, n2_3, dopp, main_vol, mute)
-	if not FS9_ENGINE_SOUNDS then return end
-
-	-- mute the old engine running layers (reverse/starter/APU/rattle/de-ice untouched)
-	setSampleGain(inn_middle_left_1, 0)  setSampleGain(inn_middle_right_1, 0)
-	setSampleGain(es_n1_inn[1][1], 0)  setSampleGain(es_n1_inn[1][2], 0)
-	setSampleGain(inn_middle_left_2, 0)  setSampleGain(inn_middle_right_2, 0)
-	setSampleGain(es_n1_inn[2][1], 0)  setSampleGain(es_n1_inn[2][2], 0)
-	setSampleGain(inn_middle_left_3, 0)  setSampleGain(inn_middle_right_3, 0)
-	setSampleGain(es_n1_inn[3][1], 0)  setSampleGain(es_n1_inn[3][2], 0)
-	setSampleGain(out_idle_left_1, 0)    setSampleGain(out_idle_right_1, 0)
-	setSampleGain(es_n1_out[1][1], 0)  setSampleGain(es_n1_out[1][2], 0)
-	setSampleGain(out_idle_left_2, 0)    setSampleGain(out_idle_right_2, 0)
-	setSampleGain(es_n1_out[2][1], 0)  setSampleGain(es_n1_out[2][2], 0)
-	setSampleGain(out_idle_left_3, 0)    setSampleGain(out_idle_right_3, 0)
-	setSampleGain(es_n1_out[3][1], 0)  setSampleGain(es_n1_out[3][2], 0)
-	setSampleGain(out_behind_left_1, 0)  setSampleGain(out_behind_right_1, 0)
-	setSampleGain(out_behind_left_2, 0)  setSampleGain(out_behind_right_2, 0)
-	setSampleGain(out_behind_left_3, 0)  setSampleGain(out_behind_right_3, 0)
-	setSampleGain(out_high_left_1, 0)    setSampleGain(out_high_right_1, 0)
-	setSampleGain(out_high_left_2, 0)    setSampleGain(out_high_right_2, 0)
-	setSampleGain(out_high_left_3, 0)    setSampleGain(out_high_right_3, 0)
-	setSampleGain(blast_full_1_L, 0) setSampleGain(blast_full_1_R, 0)
-	setSampleGain(blast_low_1_L, 0)  setSampleGain(blast_low_1_R, 0)
-	setSampleGain(blast_far_1_L, 0)  setSampleGain(blast_far_1_R, 0)
-	setSampleGain(blast_full_2_L, 0) setSampleGain(blast_full_2_R, 0)
-	setSampleGain(blast_low_2_L, 0)  setSampleGain(blast_low_2_R, 0)
-	setSampleGain(blast_far_2_L, 0)  setSampleGain(blast_far_2_R, 0)
-	setSampleGain(blast_full_3_L, 0) setSampleGain(blast_full_3_R, 0)
-	setSampleGain(blast_low_3_L, 0)  setSampleGain(blast_low_3_R, 0)
-	setSampleGain(blast_far_3_L, 0)  setSampleGain(blast_far_3_R, 0)
-
-	-- per-engine RPM as 0..1 fractions
-	local n2 = {n2_1 / 100, n2_2 / 100, n2_3 / 100}
-	local n1 = {get(snd_n1_1) / 100, get(snd_n1_2) / 100, get(snd_n1_3) / 100}
-
-	-- placement factors (mono samples: average of the L/R balance the old layers used)
-	local fac_in = 0
-	local fac_out = {0, 0, 0}
-	if external == 0 then
-		local view_head = acf_hd - cam_hd
-		while view_head > 180 do view_head = view_head - 360 end
-		while view_head < -180 do view_head = view_head + 360 end
-		local bl, br = inn_balance(view_head, -get(pilot_Z) - 1.42 + 9)
-		local cdr = math.max(bool2int(get(pilot_Z) + 1.42 > -19.1), get(cockpit_door))
-		fac_in = math.max(0, 0.5 * (bl + br)) * (0.75 + 0.75 * cdr) / 1.5
-	else
-		local l1, r1 = out_balance(-3.24, 9.18, 0, 60, 120, 900)
-		local l2, r2 = out_balance(0, 15, 0, 50, 120, 900)
-		local l3, r3 = out_balance(3.24, 9.18, 0, 60, 120, 900)
-		fac_out = {0.5 * (l1 + r1), 0.5 * (l2 + r2), 0.5 * (l3 + r3)}
-	end
-
-	for e = 1, 3 do
-		local detune = 1
-		if e == 2 then detune = FS9_ENG2_DETUNE end
-		for i, L in ipairs(fs9_layers) do
-			local smp = fs9_snd[e][i]
-			if fs9_ok(smp) then
-				local x = n1[e]
-				if L[4] == "whine" then
-					if FS9_WHINE_KEY == "n1" then x = n1[e] else x = n2[e] end
-				end
-				local vol = fs9_vol(L[6], x) / 100
-				local pitch = 1000 * fs9_rate(L[5], x) * detune
-				local gain = 0
-				if external == 0 then
-					gain = vol * FS9_INN_LEVEL * fac_in
-				else
-					gain = vol * FS9_EXT_LEVEL * fac_out[e]
-					pitch = pitch + dopp
-				end
-				if mute then gain = 0 end
-				setSampleGain(smp, gain * FS9_ENG_SCALE * main_vol)
-				setSamplePitch(smp, pitch)
-			end
-		end
-	end
-end
 
 function shut_update(external, dopp, main_vol, mute)
 	local burn = {get(eng_working_1), get(eng_working_2), get(eng_working_3)}
@@ -1402,9 +1242,6 @@ function update()
 	
 	-- engine shutdown one-shot
 	shut_update(external, dopp, main_vol, passed == 0 or get(main_sound_on) == 0)
-
-	-- FS2004 soundset experiment (overrides the old engine running layers when ON)
-	fs9_update(external, rpm_1, rpm_2, rpm_3, dopp, main_vol, passed == 0 or get(main_sound_on) == 0)
 
 	-- mute all sounds
 	if passed == 0 or get(main_sound_on) == 0 then
