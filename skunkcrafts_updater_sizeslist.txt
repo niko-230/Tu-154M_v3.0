@@ -2160,7 +2160,7 @@ plugins/sasl/data/modules/Custom Module/sounds/cockpit_sounds.lua|23641
 plugins/sasl/data/modules/Custom Module/sounds/crew_voices.lua|1770
 plugins/sasl/data/modules/Custom Module/sounds/door_sounds.lua|10128
 plugins/sasl/data/modules/Custom Module/sounds/engine_whine.lua|33529
-plugins/sasl/data/modules/Custom Module/sounds/engines_sound.lua|71651
+plugins/sasl/data/modules/Custom Module/sounds/engines_sound.lua|63549
 plugins/sasl/data/modules/Custom Module/sounds/left_panel_sounds.lua|9149
 plugins/sasl/data/modules/Custom Module/sounds/right_panel_sounds.lua|5963
 plugins/sasl/data/modules/Custom Module/sounds/sounds.lua|264
