@@ -1,4 +1,4 @@
-Tu-154M v3.0 XP12
+Tu-154M v3.X XP12
 
 This mod is based entirely on Tu-154B-2 CE
 
