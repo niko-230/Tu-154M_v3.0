@@ -1,0 +1,47 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository, build updater metadata and push to needed branch
+        uses: actions/checkout@v4
+      - run: |
+          sudo apt-get -y install libarchive-zip-perl
+      - run: |
+          TAG=${GITHUB_REF##*/}
+
+          sed -i "s/REPLACE_ME/${TAG}/g" ${{ github.workspace }}/skunkcrafts_updater.cfg
+          sed -i "s/REPLACE_ME/${TAG}/g" ${{ github.workspace }}/skunkcrafts_updater_beta.cfg
+
+          rm -f skunkcrafts_updater_whitelist.txt
+          find . -type f ! \( -name '*skunkcrafts_updater*' -o -path '*skunkcrafts_updater*' -o -path '*/.git/*' \) -print0 | while IFS= read -r -d '' file; do
+            checksum_hex=$(crc32 "$file")
+            # Convert hex checksum to uint32 decimal for updater
+            checksum_dec=$((16#${checksum_hex}))
+            # Normalize path: remove leading './' then ensure it starts with '/'
+            path="${file#./}"
+            path="${path}"
+            echo "$path|$checksum_dec" >> skunkcrafts_updater_whitelist.txt
+          done
+
+          TARGET_BRANCH="release"
+
+          if [[ $TAG == *"-"* ]]; then
+            echo "This is a beta release"
+            TARGET_BRANCH="beta"
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b $TARGET_BRANCH
+          git add .
+          git commit -m "new ${TARGET_BRANCH} - ${TAG}"
+          git push -f -u origin ${TARGET_BRANCH}

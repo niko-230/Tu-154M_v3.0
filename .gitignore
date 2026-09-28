@@ -1,0 +1,20 @@
+# macOS junk
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows junk
+Thumbs.db
+desktop.ini
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+*.orig
+*~
+
+# Python leftovers from helper scripts
+__pycache__/
+*.pyc
