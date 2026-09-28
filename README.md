@@ -12,7 +12,7 @@ Initial scope of the project:
 - lighting setup
 - sounds re-engeneering
 
-  Futher development:
-  - Engeneer panel swap
-  - refinements
-  - "UNS only" cockpit
+Futher development:
+- Engeneer panel swap
+- refinements
+- "UNS only" cockpit
