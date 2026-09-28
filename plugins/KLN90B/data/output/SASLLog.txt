@@ -1,0 +1,30 @@
+[KLN90B INFO]: Initializing...
+[KLN90B INFO]: [DISPLAY] Main Screen Bounds: 0, 0, 1728, 1042
+[KLN90B INFO]: Path to module: /Users/NikolayJeliazkov/X-Plane 12/Aircraft/Tu-154M_v3.0/plugins/KLN90B/data/modules/main.lua
+[KLN90B INFO]: Loading module...
+[KLN90B INFO]: [LUA]: loading	module
+[KLN90B INFO]: [LUA]: THIS IS KLN90B V0.98B:  https://forums.x-plane.org/index.php?/files/file/55881-kln90bmd41-for-x-plane-1112/
+[KLN90B INFO]: [LUA]: loading	dataref_creator_1
+[KLN90B INFO]: [LUA]: loading	KLN90_panel
+[KLN90B DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[KLN90B WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <scp/api/ismaster> not found
+[KLN90B WARN]: [STACK]:| ...Tu-154M_v3.0/plugins/KLN90B/data/init/initProperties.lua:297 in function <globalPropertyf>
+[KLN90B WARN]: [STACK]:| ...lugins/KLN90B/data/modules/Custom Module/KLN90_panel.lua:101 in function <f>
+[KLN90B WARN]: [STACK]:| ...craft/Tu-154M_v3.0/plugins/KLN90B/data/init/initMain.lua:260 in function <KLN90_panel>
+[KLN90B WARN]: [STACK]:| ...rcraft/Tu-154M_v3.0/plugins/KLN90B/data/modules/main.lua:28 in function <f>
+[KLN90B WARN]: [STACK]:| ...craft/Tu-154M_v3.0/plugins/KLN90B/data/init/initMain.lua:260 in function <c>
+[KLN90B WARN]: [STACK]:| ...
+[KLN90B INFO]: [LUA]: loading	rectangle2
+[KLN90B INFO]: [LUA]: loading	texture
+[KLN90B INFO]: [LUA]: loading	KLN90_2D
+[KLN90B INFO]: [LUA]: loading	textureLit
+[KLN90B INFO]: [LUA]: loading	textureLit2
+[KLN90B INFO]: [LUA]: loading	clickable
+[KLN90B INFO]: [LUA]: loading	textureRotate
+[KLN90B INFO]: [LUA]: loading	rectangle
+[KLN90B INFO]: [LUA]: loading	KLN90_2D_display
+[KLN90B INFO]: [LUA]: loading	MD41_2D
+[KLN90B INFO]: [LUA]: loading	KLNpopup_panel
+[KLN90B INFO]: Module loaded
+[KLN90B INFO]: Disabling...
+[KLN90B INFO]: SASL plugin stopped...

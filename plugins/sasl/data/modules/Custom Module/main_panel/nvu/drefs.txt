@@ -1,0 +1,33 @@
+PA3 DataRefs from moving_map.lua
+=================================
+
+State/Output DataRefs (PA3_DATAREFS table)
+------------------------------------------
+DataRef Path                              Type    Description
+tu154b2/custom/nvu/pa3/scroll             float   Current scroll position
+tu154b2/custom/nvu/pa3/scroll_anim        float   Animated scroll position
+tu154b2/custom/nvu/pa3/cursor             float   Current cursor position
+tu154b2/custom/nvu/pa3/mode               int     PA3 mode (0=enroute, 1=airdrome)
+tu154b2/custom/nvu/pa3/power              int     Power state (0/1)
+tu154b2/custom/nvu/pa3/current_leg        int     Current leg index
+tu154b2/custom/nvu/pa3/zmax               int     Zmax lamp state (cursor at max deflection)
+tu154b2/custom/nvu/pa3/scroll_offset      float   Scroll offset for mark alignment
+
+Global State DataRefs
+---------------------
+DataRef Path                              Type    Description
+tu154b2/custom/nvu/pa3/enabled            int     PA3 enabled flag
+tu154b2/custom/nvu/pa3/showscrollmenu     int     Show scroll menu flag
+
+Interface DataRefs (PA3_INTERFACE table)
+----------------------------------------
+DataRef Path                                        Type    Description
+tu154b2/custom/switchers/nvu/pa3/power_sw           int     Power switch
+tu154b2/custom/switchers/nvu/pa3/mode_sw            int     Mode switch
+tu154b2/custom/buttons/nvu/pa3/cursor_left_btn      int     Cursor left button
+tu154b2/custom/buttons/nvu/pa3/cursor_right_btn     int     Cursor right button
+tu154b2/custom/buttons/nvu/pa3/release_btn          int     Release/recouple button
+tu154b2/custom/buttons/nvu/pa3/scroll_down_btn      int     Scroll down button
+tu154b2/custom/buttons/nvu/pa3/scroll_up_btn        int     Scroll up button
+
+Total: 17 PA3-related DataRefs

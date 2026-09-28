@@ -1,0 +1,618 @@
+-- this is flaps, slats and hor-stab logic
+
+defineProperty("external_view", globalPropertyi("sim/graphics/view/view_is_external")) -- enviroment
+-- sim positions
+defineProperty("flap_inn_L", globalPropertyf("sim/flightmodel/controls/wing1l_fla1def")) -- inner flaps left
+defineProperty("flap_inn_R", globalPropertyf("sim/flightmodel/controls/wing1r_fla1def")) -- inner flaps right
+
+defineProperty("flap_mid_L", globalPropertyf("sim/flightmodel/controls/wing2l_fla2def")) -- middle flaps left
+defineProperty("flap_mid_R", globalPropertyf("sim/flightmodel/controls/wing2r_fla2def")) -- middle flaps right
+
+--defineProperty("slats", globalPropertyf("sim/flightmodel/controls/slatrat")) -- slats position. this one works
+defineProperty("slats", globalPropertyf("sim/flightmodel2/controls/slat1_deploy_ratio")) -- slats position. this one works too
+
+defineProperty("stab_ratio", globalPropertyf("sim/cockpit2/controls/elevator_trim")) -- sim pitch trimmer
+defineProperty("stab_pos", globalPropertyf("sim/flightmodel2/controls/stabilizer_deflection_degrees")) -- stab position
+-- controls
+defineProperty("sim_flap_ratio", globalPropertyf("sim/cockpit2/controls/flap_ratio")) -- sim flaps ratio control. use for axis and commands
+
+defineProperty("flaps_lever", globalPropertyf("tu154b2/custom/controll/flaps_lever")) -- sim flaps ratio control. use for axis and commands
+defineProperty("flaps_sel", globalPropertyi("tu154b2/custom/switchers/flaps_sel")) -- ????? ??????? ?????? ?????????. -1 - ????, 0 - ???, +1 - ??????
+
+defineProperty("slat_man", globalPropertyi("tu154b2/custom/switchers/slat_man")) -- ?????? ?????????? ????????????. -1 - ??????, 0 ????, +1 - ??????
+defineProperty("slat_man_cap", globalPropertyi("tu154b2/custom/switchers/slat_man_cap")) -- ?????? ??????? ?????????? ????????????
+
+defineProperty("stab_man_cap", globalPropertyi("tu154b2/custom/controll/stab_man_cap")) -- ?????? ?????????? ??????????????
+defineProperty("stab_manual", globalPropertyi("tu154b2/custom/controll/stab_manual")) -- ????????? ??????????????. 0 - ?????, +1 - ????????????
+defineProperty("stab_setting", globalPropertyi("tu154b2/custom/controll/stab_setting")) -- ????????? ????????? ??? ?????. 0 - ?, 1 - ?, 2 - ?	1
+
+-- other sources
+
+-- hydraulics
+defineProperty("gs_press_1", globalPropertyf("tu154b2/custom/hydro/gs_press_1")) -- ???????? ? ??1
+defineProperty("gs_press_2", globalPropertyf("tu154b2/custom/hydro/gs_press_2")) -- ???????? ? ??2
+defineProperty("gs_press_3", globalPropertyf("tu154b2/custom/hydro/gs_press_3")) -- ???????? ? ??3
+
+defineProperty("frame_time", globalPropertyf("tu154b2/custom/time/frame_time")) -- time of frame
+
+-- power
+defineProperty("bus27_volt_left", globalPropertyf("tu154b2/custom/elec/bus27_volt_left")) -- ?????????? ???? 27
+defineProperty("bus27_volt_right", globalPropertyf("tu154b2/custom/elec/bus27_volt_right")) -- ?????????? ???? 27
+
+defineProperty("bus36_volt_left", globalPropertyf("tu154b2/custom/elec/bus36_volt_left")) -- ?????????? ???? 36? ???
+defineProperty("bus36_volt_right", globalPropertyf("tu154b2/custom/elec/bus36_volt_right")) -- ?????????? ???? 36? ????
+
+defineProperty("bus115_1_volt", globalPropertyf("tu154b2/custom/elec/bus115_1_volt"))
+defineProperty("bus115_3_volt", globalPropertyf("tu154b2/custom/elec/bus115_3_volt"))
+
+defineProperty("ctr_115_1_cc", globalPropertyf("tu154b2/custom/control/ctr_115_1_cc")) -- ???????? ?? ????
+defineProperty("ctr_115_3_cc", globalPropertyf("tu154b2/custom/control/ctr_115_3_cc")) -- ???????? ?? ????
+
+-- Smart Copilot
+defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
+defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+
+
+-- failures
+defineProperty("flap_fail_left", globalPropertyi("tu154b2/custom/failures/flap_fail_left")) -- 
+defineProperty("flap_fail_right", globalPropertyi("tu154b2/custom/failures/flap_fail_right")) -- 
+
+defineProperty("stab_eng_fail", globalPropertyi("tu154b2/custom/failures/stab_eng_fail")) -- 
+defineProperty("stab_automatic_fail", globalPropertyi("tu154b2/custom/failures/stab_automatic_fail")) -- 
+defineProperty("slats_fail", globalPropertyi("tu154b2/custom/failures/slats_fail")) -- 
+
+
+-- spoilers sources
+defineProperty("deflection_mtr_2", globalProperty("sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]")) -- 
+defineProperty("deflection_mtr_3", globalProperty("sim/flightmodel2/gear/tire_vertical_deflection_mtr[2]")) -- 
+defineProperty("revers_L", globalPropertyf("tu154b2/custom/controlls/revers_L")) -- ????? ??????? ???
+defineProperty("revers_R", globalPropertyf("tu154b2/custom/controlls/revers_R")) -- ????? ??????? ????
+defineProperty("spd_brk_inn_L", globalProperty("sim/flightmodel/controls/wing1l_spo1def")) -- inner speedbrake left Degrees
+defineProperty("spd_brk_inn_R", globalProperty("sim/flightmodel/controls/wing1r_spo1def")) -- inner speedbrake right Degrees
+defineProperty("kontur_on", globalPropertyf("tu154b2/custom/b2/kontur_on")) -- inner speedbrake right Degrees
+flaps_power = globalPropertyi("sim/custom/b2/flaps_power")
+-- FIX: bare global assignments (missing defineProperty wrapper), causing "can't load
+-- component" errors every frame -- confirmed firing continuously via Log.txt.
+defineProperty("drive_1", globalPropertyi("tu154b2/custom/controlls/flap_chan_1"))
+defineProperty("drive_2", globalPropertyi("tu154b2/custom/controlls/flap_chan_2"))
+	
+
+flaps_cmd_up = findCommand("sim/flight_controls/flaps_up")
+flaps_cmd_down = findCommand("sim/flight_controls/flaps_down")
+defineProperty("pilot_Z", globalPropertyf("sim/aircraft/view/acf_peZ"))
+defineProperty("pilot_X", globalPropertyf("sim/aircraft/view/acf_peX"))
+defineProperty("pilot_head", globalPropertyi("sim/graphics/view/pilots_head_psi"))
+
+--defineProperty("db1", globalPropertyf("tu154b2/custom/controlls/debug1"))
+
+local flaps_sound_L = loadSample(moduleDirectory .. '/Custom Sounds/flaps_hnd_L.wav')
+local flaps_sound_R = loadSample(moduleDirectory .. '/Custom Sounds/flaps_hnd_R.wav')
+
+local panel_x=-0.0023969451
+local panel_z=-22.866001
+local dist_gain=5
+
+-- CORRECTED (2026-08-20): mkv values now match M donor's own code exactly (controls/flaps.lua):
+-- M donor uses: ? takeoff=1.5, ? takeoff=3, ? landing=3, ? landing=5.5 -- all in internal 0-5.5 space
+-- stab_ratio = stab_pos_now/5.5, cockpit indicator reads elevator_trim*5.5 = stab_pos_now
+-- mkv_1=0 was wrong: M donor shows -1.5? stab on takeoff ? = internal 1.5, not 0
+-- The earlier balloon at mkv_1=1.5 was caused by compounding issues now fixed (elev_coef, engine_pitch *q)
+local mkv_1=1.5   -- C selector takeoff: M donor real value
+local mkv_2=3.0   -- P selector takeoff: M donor real value
+local mkv_3=5.5   -- P selector landing max: M donor real value
+
+local function inn_balance (src_x, src_z, x, z , cam_hdg)
+
+	local hdg_rad = math.rad(cam_hdg)
+	-- local x_s = acf_x + src_x * math.cos(hdg_rad) - src_z * math.sin(hdg_rad)
+	-- local z_s = acf_z + src_x * math.sin(hdg_rad) + src_z * math.cos(hdg_rad)
+	local dist = math.sqrt(math.pow(src_x - x, 2) + math.pow(src_z - z, 2))
+	
+	if dist < 1 then dist = 1 end
+	
+	local angle2source = cam_hdg + math.deg(math.atan2(x - src_x, z - src_z)) -- angle from camera to the source
+	while angle2source > 180 do angle2source = angle2source - 360 end
+	while angle2source < -180 do angle2source = angle2source + 360 end
+	local ch_L = (0.2/math.pow(dist,2) + (1 + math.sin(math.rad(angle2source))) ) 
+	local ch_R = (0.2/math.pow(dist,2) + (1 + math.sin(math.rad(-angle2source))) )
+	if ch_L > 1 then ch_L = 1 end
+	if ch_R > 1 then ch_R = 1 end
+
+	
+	-- local ch_L = 0.4 + (1 + math.sin(math.rad(cam_hdg))) * 0.7 * 0.6 + (1 - dist / 20)	
+	
+	-- local ch_R = 0.4 + (1 + math.sin(math.rad(-cam_hdg))) * 0.7 * 0.6 + (1 - dist / 20)
+	
+	return ch_L, ch_R
+end
+
+
+function flaps_up_handler(phase)
+	if 0 == phase then
+		if get(external_view) == 0 then
+			local z_pos=get(pilot_Z)
+			local z_pos=get(pilot_Z)
+			local x_pos=get(pilot_X)
+			local plt_hdg=get(pilot_head)
+			local gain_L, gain_R = inn_balance (panel_x, panel_z, x_pos, z_pos , plt_hdg)
+			gain_L=gain_L*1000
+			gain_R=gain_R*1000
+			local dist=1
+			if z_pos-panel_z~=0 then
+				dist=math.min(1,1/math.sqrt(math.pow(z_pos-panel_z,2)+math.pow(x_pos-panel_x,2))/dist_gain)
+			end
+			setSampleGain(flaps_sound_L,gain_L*dist)
+			setSampleGain(flaps_sound_R,gain_R*dist)
+			playSample(flaps_sound_L, false)
+			playSample(flaps_sound_R, false)
+		end
+	end
+	return 0
+end
+
+function flaps_down_handler(phase)
+	if 0 == phase then
+		if get(external_view) == 0 then 
+			if get(external_view) == 0 then
+				local z_pos=get(pilot_Z)
+				local z_pos=get(pilot_Z)
+				local x_pos=get(pilot_X)
+				local plt_hdg=get(pilot_head)
+				local gain_L, gain_R = inn_balance (panel_x, panel_z, x_pos, z_pos , plt_hdg)
+				gain_L=gain_L*1000
+				gain_R=gain_R*1000
+				local dist=1
+				if z_pos-panel_z~=0 then
+					dist=math.min(1,1/math.sqrt(math.pow(z_pos-panel_z,2)+math.pow(x_pos-panel_x,2))/dist_gain)
+				end
+				setSampleGain(flaps_sound_L,gain_L*dist)
+				setSampleGain(flaps_sound_R,gain_R*dist)
+				playSample(flaps_sound_L, false)
+				playSample(flaps_sound_R, false)
+			end
+		end
+	end
+	return 0
+end
+
+registerCommandHandler(flaps_cmd_up, 0, flaps_up_handler)
+registerCommandHandler(flaps_cmd_down, 0, flaps_down_handler)
+
+
+
+
+-- ported from M: 4th flap detent (36?/32? intermediate stop) added between 28? and 45?
+flap_lever_tbl = {
+{-50000, 0},
+{0, 0},
+{0.20, 15},
+{0.25, 15}, -- stop pos
+{0.30, 15},
+{0.45, 28},
+{0.50, 28}, -- stop pos
+{0.55, 28},
+{0.70, 36},
+{0.75, 36}, -- stop pos
+{0.80, 36},
+{0.95, 45},
+{1.00, 45}, -- stop pos
+{10000, 45}
+}
+
+local mid_flap_tbl = {
+{0, 0},
+{15, 13},
+{28, 25},
+{36, 32},
+{45, 40}
+}
+
+local flaps_pos_cmd = get(flap_inn_L)
+local auto_retract = 0
+local flaps_dir_1 = 0
+local flaps_dir_2 = 0
+
+-- REPLACED (2026-08-18): flat 1.8 deg/s was an approximation. Real Tu-154 flap
+-- drive is segmented, not linear -- full-hydraulics reference times: 0-15deg in
+-- 7-8s, 15-28deg in 7s, 28-36deg in 4s, 36-45deg in 9s. Rates below use the
+-- midpoint of the 0-15 range (7.5s) and are exact for the other three segments.
+local function flap_rate(pos)
+	if pos < 15 then
+		return 15/7.5      -- 2.000 deg/s
+	elseif pos < 28 then
+		return 13/7         -- 1.857 deg/s
+	elseif pos < 36 then
+		return 8/4          -- 2.000 deg/s
+	else
+		return 9/9           -- 1.000 deg/s
+	end
+end
+local flap_pos_L_last = flaps_pos_cmd
+local flap_pos_R_last = flaps_pos_cmd
+
+local slats_pos_cmd = get(slats)
+local slats_dirr = 0
+-- FIXED (2026-08-18): real slat travel is 18s full extension/retraction
+-- (1/18 = 0.05556 ratio/sec). Previous value (0.035, ~28.6s) was B's leftover
+-- constant, never actually matched to either donor's real slat timing.
+local slats_spd = 1/18
+local slats_prev = 0
+
+local stab_pos_now = get(stab_ratio) * 5.5 -- 0 - 5.5 degrees
+local stab_pos_cmd = stab_pos_now
+local stab_dirr = 0
+local flaps_lever_last = get(flaps_lever)
+local flap_lever_sw=0
+
+local lever_moved_dir = -1 -- -1 = moved up, +1 = moved down
+local stab_must_move = false
+
+local flap_desync = 0
+local resync_timer = 0
+
+local drive_pos_now = 0
+
+function update()
+	
+	local MASTER = get(ismaster) ~= 1
+	
+if MASTER then
+	
+	-- initial
+	local passed = get(frame_time)
+	local flap_mode_sw = get(flaps_sel)
+	local flaps_mode_1 = flap_mode_sw
+	local flaps_mode_2 = flap_mode_sw
+	
+	-- failures
+	local flap_mech_L_fail = get(flap_fail_left)
+	local flap_mech_R_fail = get(flap_fail_right)
+	
+	-- power
+	local power27_L = bool2int(get(bus27_volt_left) > 13)
+	local power27_R = bool2int(get(bus27_volt_right) > 13)
+	
+	local power36_L = bool2int(get(bus36_volt_left) > 30)
+	local power36_R = bool2int(get(bus36_volt_right) > 30)
+	
+	local power115_1 = bool2int(get(bus115_1_volt) > 110)
+	local power115_3 = bool2int(get(bus115_3_volt) > 110)
+	
+	local CC_115_1 = 0
+	local CC_115_3 = 0
+	
+	if power36_L == 0 and flaps_mode_1 == 0 then
+		flaps_mode_1 = 1
+	end
+	if power36_R == 0 and flaps_mode_2 == 0 then
+		flaps_mode_2 = 1
+	end
+	--------------------------------------
+	-- flaps --
+
+    -- autoretract
+        
+        
+	local gears = get(deflection_mtr_2) > 0.01 and get(deflection_mtr_3) > 0.01
+	local revers = get(revers_L) > 0.05 and get(revers_R) > 0.05
+	local gs_1 = get(gs_press_1)
+	local gs_2 = get(gs_press_2)
+	local HS1 = math.min(gs_1 * 0.01, 1) * bool2int(gs_1>40)
+	local HS2 = math.min(gs_2 * 0.01, 1) * bool2int(gs_2>40)
+    local flap_power=get(flaps_power)>0 and (power27_L or power27_R)
+        
+    -- DISABLED (2026-09-02): real Tu-154M does not auto-retract flaps to 28 after landing,
+    -- this was B-donor-only behavior. Trigger permanently disabled below; left auto_retract's
+    -- declaration, reset-check, and flaps_pos_cmd branch (lines ~211, ~313-323) untouched --
+    -- auto_retract simply now never becomes 1, so flaps_pos_cmd always follows the lever.
+    -- if revers and gears and auto_retract == 0 and flap_power and (gs_1 > 50 or gs_2 > 50) and (flaps_pos_cmd) > 31 and (get(spd_brk_inn_L)+get(spd_brk_inn_R))/2 > 10 and flaps_mode_1 + flaps_mode_2 == 0 and get(kontur_on) > 0 then
+    --    auto_retract = 1
+    -- end
+        
+            
+	
+	-- flap lever position and animation
+	local flap_lever_pos = interpolate(flap_lever_tbl, get(sim_flap_ratio))
+        
+    if auto_retract == 1 and flap_lever_pos - (flaps_pos_cmd) < 2 and not revers then
+        auto_retract = 0
+    end
+	
+	-- calculate flaps commanded position
+	    set(flaps_lever, flap_lever_pos)
+    if auto_retract > 0 then
+        flaps_pos_cmd = 28
+    else     
+        flaps_pos_cmd = flap_lever_pos -- for automatic movement. can add control failures here
+    end
+	
+	-- flaps movements
+	
+	local flap_pos_now_L = get(flap_inn_L)
+	local flap_pos_now_R = get(flap_inn_R)
+	
+	local power_1 = 0
+	local power_2 = 0
+	
+	if flaps_mode_1 == 0 and flap_power then -- automatic movements
+		if drive_pos_now < flaps_pos_cmd - 0.35 or flaps_pos_cmd > 44 then 
+			flaps_dir_1 = 1
+			power_1 = 1 - flap_desync
+		elseif drive_pos_now > flaps_pos_cmd + 0.35 or flaps_pos_cmd < 1 then 
+			flaps_dir_1 = -1
+			power_1 = 1 - flap_desync
+		else 
+			flaps_dir_1 = 0
+		end	
+	elseif flaps_mode_1 == 1 and flap_power then -- manual movements		
+		if flap_lever_pos > 40 then	
+			flaps_dir_1 = 1
+			power_1 = 1 - flap_desync
+		elseif flap_lever_pos < 5 then 
+			flaps_dir_1 = -1
+			power_1 = 1 - flap_desync
+		else 
+			flaps_dir_1 = 0 
+		end	
+		
+	elseif flaps_mode_1 == -1 then  -- resync mode
+		if resync_timer>5 then 
+			resync_timer = 0
+			elseif resync_timer>0 and resync_timer<0.5 then
+			if flap_mech_L_fail>0 then
+				if flap_pos_now_R > flap_pos_now_L then 
+					flaps_dir_1 = -1
+					power_1 = 1
+				else 
+					flaps_dir_1 = 0
+					resync_timer = 0
+				end		
+			else
+				if flap_pos_now_L > flap_pos_now_R then 
+					flaps_dir_1 = -1
+					power_1 = 1
+				else 
+					flaps_dir_1 = 0
+					resync_timer = 0
+				end			
+			end
+			resync_timer = resync_timer + passed
+		else
+			resync_timer = resync_timer + passed
+		end
+	end
+
+	
+	if flaps_mode_2 == 0 and flap_power then -- automatic movements		
+		if drive_pos_now < flaps_pos_cmd - 0.1 then 
+			flaps_dir_2 = 1
+			power_2 = 1 - flap_desync
+		elseif drive_pos_now > flaps_pos_cmd then 
+			flaps_dir_2 = -1
+			power_2 = 1 - flap_desync
+		else 
+			flaps_dir_2 = 0
+		end
+	elseif flaps_mode_2 == 1 and flap_power then -- manual movements		
+		if flap_lever_pos > 40 then	
+			flaps_dir_2 = 1
+			power_2 = 1 - flap_desync
+		elseif flap_lever_pos < 5 then 
+			flaps_dir_2 = -1
+			power_2 = 1 - flap_desync
+		else 
+			flaps_dir_2 = 0 
+		end	
+	end
+	
+	if math.abs(flap_pos_now_L - flap_pos_now_R)>2.91 then
+		flap_desync = 1
+	end
+	-- move the flaps
+	drive_pos_now = drive_pos_now + passed * (flaps_dir_1 * HS1 * power_1 +  flaps_dir_2 * HS2 * power_2 )/2 * flap_rate(drive_pos_now)
+	
+	-- set limits
+	if drive_pos_now > 45 then 
+		drive_pos_now = 45
+		power_1 = 0
+		power_2 = 0
+	elseif drive_pos_now < 0 then 
+		drive_pos_now= 0
+		power_1 = 0
+		power_2 = 0
+	end
+        
+	if flaps_dir_1==1 then
+		stab_dirr=1
+	elseif flaps_dir_1==-1 then
+		stab_dirr=-1
+	elseif get(stab_man_cap) == 1 or not power27_L then 
+		stab_dirr=0
+	end		
+
+	if not flap_power then
+		flaps_dir_1 = 0
+		flaps_dir_2 = 0
+		flap_desync = 0
+		resync_timer = 0
+		power_1 = 0
+		power_2 = 0
+	end
+	
+	-- flap sounds
+	
+	if flaps_lever_last ~= flap_lever_pos and (flap_lever_pos == 0 or flap_lever_pos == 15 or flap_lever_pos == 28 or flap_lever_pos == 36 or flap_lever_pos == 45) then
+			local z_pos=get(pilot_Z)
+			local z_pos=get(pilot_Z)
+			local x_pos=get(pilot_X)
+			local plt_hdg=get(pilot_head)
+			local gain_L, gain_R = inn_balance (panel_x, panel_z, x_pos, z_pos , plt_hdg)
+			gain_L=gain_L*1000
+			gain_R=gain_R*1000
+			local dist=1
+			if z_pos-panel_z~=0 then
+				dist=math.min(1,1/math.sqrt(math.pow(z_pos-panel_z,2)+math.pow(x_pos-panel_x,2))/dist_gain)
+			end
+			setSampleGain(flaps_sound_L,gain_L*dist)
+			setSampleGain(flaps_sound_R,gain_R*dist)
+			playSample(flaps_sound_L, false)
+			playSample(flaps_sound_R, false)
+	end
+	
+	flaps_lever_last = flap_lever_pos
+	if flap_mech_L_fail == 0 then
+		flap_pos_L_last = drive_pos_now
+	end
+	if flap_mech_R_fail == 0 then
+		flap_pos_R_last = drive_pos_now
+	end
+	
+	-- set results	
+    --if auto_retract then
+	set(flap_inn_L, flap_pos_L_last)
+	set(flap_inn_R, flap_pos_R_last)
+    --end
+	
+	set(flap_mid_L, interpolate(mid_flap_tbl, flap_pos_L_last))
+	set(flap_mid_R, interpolate(mid_flap_tbl, flap_pos_R_last))	
+	
+	set(drive_1,power_1)
+	set(drive_2,power_2)
+	-----------------------------------------------------
+	-- slats -- 
+	local slats_pos = get(slats)
+	local stats_eng = 2 - get(slats_fail) -- can add failures here
+	
+	-- calculate new position of slats
+	if get(slat_man_cap) == 0 then -- automatic mode
+		if flap_pos_L_last >= 12 and flap_lever_pos >= 5 then slats_pos_cmd = 1  -- delayed: slat starts at flap 12deg
+		elseif flap_lever_pos < 5 and flap_pos_L_last <= 14 and flap_pos_R_last <= 14 then slats_pos_cmd = 0
+		end	
+		
+		if slats_pos_cmd > slats_pos + 0.005 then slats_dirr = 1
+		elseif slats_pos_cmd < slats_pos then slats_dirr = -1
+		else slats_dirr = 0 end
+		--slats_dirr
+		
+	else -- manual mode
+		slats_dirr = get(slat_man)
+		slats_pos_cmd = slats_pos
+	end
+	
+	-- power
+	slats_dirr = slats_dirr * bool2int(power27_L+power27_R>0)
+	
+	-- set movement
+	slats_pos = slats_pos + slats_dirr * passed * slats_spd * (bool2int(stats_eng > 1) * power115_1 * power27_L + bool2int(stats_eng > 0) * power115_3 * power27_R)
+	
+	if slats_pos ~= slats_prev then
+		if stats_eng > 1 then CC_115_1 = 6 end
+		if stats_eng > 0 then CC_115_3 = 6 end
+	end
+	slats_prev=slats_pos
+	if slats_pos > 1 then slats_pos = 1
+	elseif slats_pos < 0 then slats_pos = 0 end
+	
+	set(slats, slats_pos)
+	
+	
+	----------------------------------------------------
+	-- stab --
+
+	
+	local stab_mechs = 2 - get(stab_eng_fail) -- two engines working normally. can add failures here
+	local stab_move=0
+	local stab_move_act=0
+
+	if get(stab_man_cap) == 0 and get(stab_automatic_fail) == 0 then -- automatic controls and no automatic fails
+		local stab_set = get(stab_setting)
+		-- Balloon fix: stab only starts when flap is almost fully extended (14.5 of 15deg).
+		-- For flap 15 approach: stab moves only in the last 0.5s of extension (~0.06 internal change during extension).
+		-- For flap 28 (pos already >14.5): coupling acts immediately. For landing stage (handled by flap_pos>=31): no change.
+		if flap_pos_L_last>14.5 then
+			if stab_dirr ==1 then
+				if flap_pos_L_last<31 then
+					if stab_set == 2 then
+						stab_move=bool2int(stab_pos_now < mkv_2)
+					elseif stab_set == 1 then
+						stab_move=bool2int(stab_pos_now < mkv_1)
+					end
+				else
+					-- FIXED (2026-08-20): landing stage (flap 36/45) IS CG-dependent per real M table
+					-- ("???? ?????????????? ?????????? ??????? ??????????? ? ?????????????", 1997 PDF):
+					-- ? (CG<24%):   5.5? physical = 5.5 internal (max) ? mkv_3
+					-- ? (24-32%):   3? physical = 2.0625 internal ? confirmed by user (donor M shows -3)
+					-- ? (CG>32%):   0? = baseline ? no drive
+					-- Previous comment "M only lets CG affect the intermediate stage" was WRONG.
+					if stab_set == 2 then
+						stab_move=bool2int(stab_pos_now < mkv_3)       -- ?: max 5.5 internal
+					elseif stab_set == 1 then
+						stab_move=bool2int(stab_pos_now < 3.0)          -- C landing: M real РЛЭ value
+					end
+					-- ? (stab_set==0): no stab drive, stays at baseline
+				end
+			elseif stab_dirr ==-1 then
+				if flap_pos_L_last<44 then
+					if flap_pos_L_last >= 20 then
+						-- landing stage retract: CG-dependent
+						if stab_set == 2 then
+							stab_move=-bool2int(stab_pos_now >= mkv_3)
+						elseif stab_set == 1 then
+							stab_move=-bool2int(stab_pos_now >= 3.0)
+						end
+					else
+						-- takeoff stage retract: CG-dependent
+						if stab_set == 2 then
+							stab_move=-bool2int(stab_pos_now >= mkv_2)
+						elseif stab_set == 1 then
+							stab_move=-bool2int(stab_pos_now >= mkv_1)
+						end
+					end
+				end
+			end
+		else
+			stab_move=-bool2int(stab_pos_now >0)
+		end
+		stab_move_act=stab_move	
+	elseif get(stab_man_cap) == 1 then -- manual stab control
+		stab_move_act = get(stab_manual)
+	end
+	
+	
+	
+	-- stab movements
+	-- Stab rate: extension 0.11/s (M real), landing extension 0.33/s; retraction 0.05/s (slower = smooth)
+	local stab_rate
+	if stab_move_act > 0 then
+		stab_rate = 0.11
+		if flap_pos_L_last >= 31 then stab_rate = 0.33 end
+	else
+		stab_rate = 0.05  -- retraction slower
+	end
+	stab_pos_now = stab_pos_now + stab_move_act * passed * (bool2int(stab_mechs > 0) * power115_1 + bool2int(stab_mechs > 1) * power115_3) * stab_rate * bool2int(power27_L)
+	
+	if stab_move ~= 0 then
+		if stab_mechs > 1 then CC_115_1 = CC_115_1 + 6.5 end
+		if stab_mechs > 0 then CC_115_3 = CC_115_3 + 6.5 end
+	
+	end
+	
+	
+	
+	-- set limits
+	if stab_pos_now > 5.5 then stab_pos_now = 5.5
+	elseif stab_pos_now < 0 then stab_pos_now = 0 end
+	
+	
+	--stab_dirr = 0
+	--stab_pos_cmd = 0
+	set(stab_ratio, stab_pos_now / 5.5)
+	set(stab_pos, -1.5 - (stab_pos_now/5.5)*4.0) -- FIXED (2026-08-18): real M functional range is -1.5 to -5.5 (span 4.0deg), not 0 to -5.5 (B) or -1.5 to -7.0 (previous B-leftover formula). Mechanism ratio/rate (0-5.5, ~27.5s dual motor) is real and correct -- only rescaled the output mapping.
+	set(ctr_115_1_cc, CC_115_1)
+	set(ctr_115_3_cc, CC_115_3)
+	
+end	
+
+
+
+end

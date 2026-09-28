@@ -1,0 +1,559 @@
+[TU154M INFO]: Initializing...
+[TU154M INFO]: [DISPLAY] Main Screen Bounds: 0, 0, 1728, 1042
+[TU154M INFO]: Path to module: /Users/NikolayJeliazkov/X-Plane 12/Aircraft/Tu-154M_v3.0/plugins/sasl/data/modules/main.lua
+[TU154M INFO]: Loading module...
+[TU154M INFO]: [LUA]: loading	module
+[TU154M INFO]: [LUA]: "module"	This is the Tu154B-2 for XP12
+[TU154M INFO]: [LUA]: "module"	Lua version is	Lua 5.1
+[TU154M INFO]: [LUA]: "module"	LuaJIT disabled
+[TU154M INFO]: [LUA]: loading	dataref_creator_1
+[TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/switches/instrument_brightness_ratio[16]> not found
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/dataref_creator_1.lua:1499 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <dataref_creator_1>
+[TU154M WARN]: [STACK]:| ...Aircraft/Tu-154M_v3.0/plugins/sasl/data/modules/main.lua:127 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <c>
+[TU154M WARN]: [STACK]:| ...
+[TU154M INFO]: [LUA]: loading	dataref_creator_2
+[TU154M INFO]: [LUA]: loading	dataref_creator_3
+[TU154M INFO]: [LUA]: loading	save_state
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/gauges/compas/pkp_obs_set_L": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/gauges/compas/pkp_obs_set_R": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/gauges/compas/pkp_helper_course_L": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/gauges/compas/pkp_helper_course_R": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/switchers/sard/sard_cabin_press_set_osn": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/switchers/sard/sard_cabin_press_set_dbl": Casting float to int
+[TU154M INFO]: [LUA]: loading	time_logic
+[TU154M INFO]: [LUA]: loading	flap_aero
+[TU154M INFO]: [LUA]: loading	transsonic
+[TU154M INFO]: [LUA]: loading	uns_logic
+[TU154M INFO]: [LUA]: loading	main_panel
+[TU154M INFO]: [LUA]: loading	vers
+[TU154M INFO]: [LUA]: "vers"	Tu154B-2 v1.1.15
+[TU154M INFO]: [LUA]: loading	sc_controls
+[TU154M INFO]: [LUA]: loading	achs1
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	clock24
+[TU154M INFO]: [LUA]: loading	mech_aneroid
+[TU154M INFO]: [LUA]: loading	svs
+[TU154M INFO]: [LUA]: loading	termo
+[TU154M INFO]: [LUA]: loading	uvid_15fk
+[TU154M INFO]: [LUA]: loading	mach_meters
+[TU154M INFO]: [LUA]: loading	uap14
+[TU154M INFO]: [LUA]: loading	eup53
+[TU154M INFO]: [LUA]: loading	agr
+[TU154M INFO]: [LUA]: loading	pkp
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/absu_power_cc": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/absu_power_cc": Casting float to int
+[TU154M INFO]: [LUA]: loading	mgv
+[TU154M INFO]: [LUA]: loading	bkk
+[TU154M INFO]: [LUA]: loading	vbe_altimeter
+[TU154M INFO]: [LUA]: loading	textureLit
+[TU154M INFO]: [LUA]: loading	needle
+[TU154M INFO]: [LUA]: loading	texture
+[TU154M INFO]: [LUA]: loading	digitstape
+[TU154M INFO]: [LUA]: loading	rectangle_ctr
+[TU154M INFO]: [LUA]: loading	rv5
+[TU154M INFO]: [LUA]: loading	msrp_clock
+[TU154M INFO]: [LUA]: loading	door_panel
+[TU154M INFO]: [LUA]: loading	tcas
+[TU154M INFO]: [LUA]: loading	tcas_panel
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	so72_panel
+[TU154M INFO]: [LUA]: loading	text_draw
+[TU154M INFO]: [LUA]: loading	tcas_logic
+[TU154M INFO]: [LUA]: loading	tcas_draw
+[TU154M INFO]: [LUA]: loading	tcas_gau
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/gauges/vvi_left": Casting float to int
+[TU154M INFO]: [LUA]: loading	needleLit
+[TU154M INFO]: [LUA]: loading	tcas_text
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/gauges/vvi_left": Casting float to int
+[TU154M INFO]: [LUA]: loading	taws
+[TU154M INFO]: [LUA]: loading	taws_panel
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	taws_logic
+[TU154M INFO]: [LUA]: loading	taws_warn_logic
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/egpws/dis_gear": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/egpws/dis_flaps": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/egpws/dis_rppz": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/egpws/dis_gs": Casting float to int
+[TU154M INFO]: [LUA]: loading	taws_sound
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/egpws/dis_sound": Casting float to int
+[TU154M INFO]: [LUA]: loading	scr_welcome
+[TU154M INFO]: [LUA]: loading	rectangle
+[TU154M INFO]: [LUA]: loading	text_draw2
+[TU154M INFO]: [LUA]: loading	scr_map_top
+[TU154M INFO]: [LUA]: loading	draw_map
+[TU154M INFO]: [LUA]: loading	scr_map_side
+[TU154M INFO]: [LUA]: loading	side_draw
+[TU154M INFO]: [LUA]: loading	scr_clock
+[TU154M INFO]: [LUA]: loading	scr_clock_spd
+[TU154M INFO]: [LUA]: loading	scr_clock_sec
+[TU154M INFO]: [LUA]: loading	scr_clock_crs
+[TU154M INFO]: [LUA]: loading	scr_test
+[TU154M INFO]: [LUA]: loading	scr_game
+[TU154M INFO]: [LUA]: loading	taws_msg
+[TU154M INFO]: [LUA]: loading	tks
+[TU154M INFO]: [LUA]: loading	km5
+[TU154M INFO]: [LUA]: loading	gyro
+[TU154M INFO]: [LUA]: loading	ush3
+[TU154M INFO]: [LUA]: loading	bgmk
+[TU154M INFO]: [LUA]: loading	tks_panel
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	tks_fails
+[TU154M INFO]: [LUA]: loading	pnp
+[TU154M DEBUG]: [LUA]: "sim/cockpit2/radios/actuators/nav1_obs_deg_mag_pilot": Casting float to int
+[TU154M DEBUG]: [LUA]: "sim/cockpit2/radios/actuators/nav2_obs_deg_mag_pilot": Casting float to int
+[TU154M DEBUG]: [LUA]: "sim/cockpit2/radios/actuators/nav1_obs_deg_mag_pilot": Casting float to int
+[TU154M DEBUG]: [LUA]: "sim/cockpit2/radios/actuators/nav2_obs_deg_mag_pilot": Casting float to int
+[TU154M INFO]: [LUA]: loading	rmi
+[TU154M INFO]: [LUA]: loading	diss
+[TU154M INFO]: [LUA]: loading	diss_panel
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	diss_logic
+[TU154M INFO]: [LUA]: loading	usvp
+[TU154M INFO]: [LUA]: loading	rsbn
+[TU154M INFO]: [LUA]: loading	rsbn_panel
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	rsbn_logic
+[TU154M INFO]: [LUA]: including	nav_funcs.lua
+[TU154M INFO]: [LUA]: "rsbn_logic"	rsbn.dat read OK
+[TU154M INFO]: [LUA]: loading	radio
+[TU154M INFO]: [LUA]: loading	radio_display
+[TU154M INFO]: [LUA]: loading	vhf
+[TU154M INFO]: [LUA]: including	functions.lua
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: including	functions.lua
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	course_mp
+[TU154M DEBUG]: [LUA]: "sim/cockpit2/radios/actuators/nav1_obs_deg_mag_pilot": Casting float to int
+[TU154M DEBUG]: [LUA]: "sim/cockpit2/radios/actuators/nav2_obs_deg_mag_pilot": Casting float to int
+[TU154M DEBUG]: [LUA]: "sim/cockpit2/radios/actuators/nav1_obs_deg_mag_pilot": Casting float to int
+[TU154M INFO]: [LUA]: loading	ark15
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	spu
+[TU154M INFO]: [LUA]: loading	mrp
+[TU154M INFO]: [LUA]: loading	radio_fails
+[TU154M INFO]: [LUA]: loading	nvu
+[TU154M INFO]: [LUA]: loading	fpln_editor
+[TU154M INFO]: [LUA]: loading	editor_background
+[TU154M INFO]: [LUA]: loading	editor_button
+[TU154M INFO]: [LUA]: loading	editor_textfield
+[TU154M INFO]: [LUA]: loading	editor_label
+[TU154M INFO]: [LUA]: loading	editor_leg
+[TU154M INFO]: [LUA]: loading	nvu_panel
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	nvu_logic
+[TU154M INFO]: [LUA]: loading	moving_map
+[TU154M INFO]: [LUA]: including	navaid_cache
+[TU154M INFO]: [LUA]: including	nav_funcs
+[TU154M INFO]: [LUA]: including	rsbn_names_ru
+[TU154M INFO]: [LUA]: loading	absu
+[TU154M INFO]: [LUA]: loading	absu_commands
+[TU154M INFO]: [LUA]: loading	absu_panel
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/lights/nvu_no_reserve": Casting float to int
+[TU154M INFO]: [LUA]: loading	absu_mode
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/switchers/console/absu_pitch_wheel": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/nvu/diss_cc": Casting float to int
+[TU154M INFO]: [LUA]: loading	absu_controls
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/switchers/console/absu_pitch_wheel": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/absu_power_cc": Casting float to int
+[TU154M INFO]: [LUA]: loading	absu_at
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/lights/button/absu_thro1": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/lights/button/absu_thro2": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/lights/button/absu_thro3": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/lights/button/absu_stab_spd": Casting float to int
+[TU154M INFO]: [LUA]: loading	absu_indicator
+[TU154M INFO]: [LUA]: loading	absu_fails
+[TU154M INFO]: [LUA]: loading	ra56_pitch_logic
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/absu_power_cc": Casting float to int
+[TU154M INFO]: [LUA]: loading	ra56_roll_logic
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/absu_power_cc": Casting float to int
+[TU154M INFO]: [LUA]: loading	ra56_yaw_logic
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/absu_power_cc": Casting float to int
+[TU154M INFO]: [LUA]: loading	absu_integrator
+[TU154M INFO]: [LUA]: loading	absu_svk
+[TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154b2/custom/absu/ppn_search_started> not found
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
+[TU154M WARN]: [STACK]:| .../data/modules/Custom Module/main_panel/absu/absu_svk.lua:171 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <absu_svk>
+[TU154M WARN]: [STACK]:| ...sasl/data/modules/Custom Module/main_panel/absu/absu.lua:16 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <absu>
+[TU154M WARN]: [STACK]:| ...
+[TU154M INFO]: [LUA]: loading	absu_ppn
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	misc_lamps
+[TU154M INFO]: [LUA]: loading	radar
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	arc_LIT
+[TU154M INFO]: [LUA]: loading	arc_alpha_decay
+[TU154M INFO]: [LUA]: loading	radar_kontur
+[TU154M INFO]: [LUA]: loading	vent
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	water_panel
+[TU154M INFO]: [LUA]: loading	gns430
+[TU154M INFO]: [LUA]: loading	misc_fails
+[TU154M INFO]: [LUA]: loading	overhead
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/kontur/srpbz": Casting float to int
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	animation
+[TU154M INFO]: [LUA]: loading	ext_anim
+[TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/custom/anim/wing_flx_right> not found
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:35 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154M WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154M WARN]: [STACK]:| ...
+[TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/custom/anim/wing_flx_left> not found
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:36 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154M WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154M WARN]: [STACK]:| ...
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	rain_mask
+[TU154M INFO]: [LUA]: loading	electric_system
+[TU154M INFO]: [LUA]: loading	battery_logic
+[TU154M INFO]: [LUA]: loading	generators_logic
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/elec/gen1_run": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/elec/gen2_run": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/elec/gen3_run": Casting float to int
+[TU154M INFO]: [LUA]: loading	current_counter
+[TU154M INFO]: [LUA]: loading	bus36_logic
+[TU154M INFO]: [LUA]: loading	bus27_logic
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	bus115_logic
+[TU154M INFO]: [LUA]: loading	gpu_logic
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	electric_fails
+[TU154M INFO]: [LUA]: loading	electric_panel
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/elec/gen1_run": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/elec/gen2_run": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/elec/gen3_run": Casting float to int
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	lights_system
+[TU154M INFO]: [LUA]: loading	light_commands
+[TU154M INFO]: [LUA]: loading	light_panel
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	cockpit_lights
+[TU154M INFO]: [LUA]: loading	ext_lights
+[TU154M INFO]: [LUA]: loading	light_fails
+[TU154M INFO]: [LUA]: loading	apu_system
+[TU154M INFO]: [LUA]: loading	apu_logic
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/elec/apu_burning_fuel": Casting float to int
+[TU154M INFO]: [LUA]: loading	apu_panel
+[TU154M DEBUG]: [LUA]: "sim/cockpit2/electrical/APU_N1_percent": Casting float to int
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	engines_system
+[TU154M INFO]: [LUA]: loading	engines_panel
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	engine_gauges
+[TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154b2/custom/eng/oil_temp_1> not found
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| ...a/modules/Custom Module/engines_system/engine_gauges.lua:44 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <engine_gauges>
+[TU154M WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:6 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154M WARN]: [STACK]:| ...
+[TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154b2/custom/eng/oil_temp_2> not found
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| ...a/modules/Custom Module/engines_system/engine_gauges.lua:45 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <engine_gauges>
+[TU154M WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:6 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154M WARN]: [STACK]:| ...
+[TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154b2/custom/eng/oil_temp_3> not found
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| ...a/modules/Custom Module/engines_system/engine_gauges.lua:46 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <engine_gauges>
+[TU154M WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:6 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154M WARN]: [STACK]:| ...
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/gauges/eng/oil_qty_1_p": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/gauges/eng/oil_qty_1_h": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/gauges/eng/oil_qty_2_p": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/gauges/eng/oil_qty_2_h": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/gauges/eng/oil_qty_3_p": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/gauges/eng/oil_qty_3_h": Casting float to int
+[TU154M INFO]: [LUA]: loading	rud_logic
+[TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154b2/custom/SC/thrust_1> not found
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| .../data/modules/Custom Module/engines_system/rud_logic.lua:159 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <rud_logic>
+[TU154M WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:7 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154M WARN]: [STACK]:| ...
+[TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154b2/custom/SC/thrust_2> not found
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| .../data/modules/Custom Module/engines_system/rud_logic.lua:160 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <rud_logic>
+[TU154M WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:7 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154M WARN]: [STACK]:| ...
+[TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154b2/custom/SC/thrust_3> not found
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| .../data/modules/Custom Module/engines_system/rud_logic.lua:161 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <rud_logic>
+[TU154M WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:7 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154M WARN]: [STACK]:| ...
+[TU154M INFO]: [LUA]: loading	vibration_logic
+[TU154M INFO]: [LUA]: loading	eng_fails
+[TU154M INFO]: [LUA]: loading	rt12
+[TU154M INFO]: [LUA]: loading	fuel_consumption
+[TU154M INFO]: [LUA]: loading	fuel_system
+[TU154M INFO]: [LUA]: loading	fuel_panel
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	fuel_tanks
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/elec/apu_burning_fuel": Casting float to int
+[TU154M INFO]: [LUA]: loading	fuel_pumps
+[TU154M INFO]: [LUA]: loading	fuel_engines
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	fuel_fails
+[TU154M INFO]: [LUA]: loading	hydro_system
+[TU154M INFO]: [LUA]: loading	hydro_panel
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	hydro_logic
+[TU154M INFO]: [LUA]: loading	hydro_fails
+[TU154M INFO]: [LUA]: loading	kskv
+[TU154M INFO]: [LUA]: loading	kskv_panel
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	kskv_bleed
+[TU154M INFO]: [LUA]: loading	kskv_cond
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/anim/cockpit_door": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/anim/pax_door_1": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/anim/pax_door_2": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/anim/pax_door_3": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/anim/cockpit_window_left": Casting float to int
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/anim/cockpit_window_right": Casting float to int
+[TU154M INFO]: [LUA]: loading	kskv_sard
+[TU154M INFO]: [LUA]: loading	kskv_fails
+[TU154M INFO]: [LUA]: loading	start_system
+[TU154M INFO]: [LUA]: loading	start_panel
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	start_logic
+[TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/bleedair/actuators/engine_bleed_sov[0]> not found
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
+[TU154M WARN]: [STACK]:| .../data/modules/Custom Module/start_system/start_logic.lua:50 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <start_logic>
+[TU154M WARN]: [STACK]:| ...data/modules/Custom Module/start_system/start_system.lua:4 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <start_system>
+[TU154M WARN]: [STACK]:| ...
+[TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/bleedair/actuators/engine_bleed_sov[1]> not found
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
+[TU154M WARN]: [STACK]:| .../data/modules/Custom Module/start_system/start_logic.lua:51 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <start_logic>
+[TU154M WARN]: [STACK]:| ...data/modules/Custom Module/start_system/start_system.lua:4 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <start_system>
+[TU154M WARN]: [STACK]:| ...
+[TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/bleedair/actuators/engine_bleed_sov[2]> not found
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
+[TU154M WARN]: [STACK]:| .../data/modules/Custom Module/start_system/start_logic.lua:52 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <start_logic>
+[TU154M WARN]: [STACK]:| ...data/modules/Custom Module/start_system/start_system.lua:4 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <start_system>
+[TU154M WARN]: [STACK]:| ...
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/anim/cargo_2": Casting float to int
+[TU154M INFO]: [LUA]: loading	controls
+[TU154M INFO]: [LUA]: loading	controls_panel
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	flight_controls
+[TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/custom/anim/spd_brk_inn_left> not found
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| .../data/modules/Custom Module/controls/flight_controls.lua:66 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <flight_controls>
+[TU154M WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:5 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <controls>
+[TU154M WARN]: [STACK]:| ...
+[TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/custom/anim/spd_brk_inn_right> not found
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| .../data/modules/Custom Module/controls/flight_controls.lua:67 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <flight_controls>
+[TU154M WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:5 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <controls>
+[TU154M WARN]: [STACK]:| ...
+[TU154M INFO]: [LUA]: loading	trimmers
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	flaps
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	nosewheel
+[TU154M DEBUG]: [LUA]: "sim/weather/runway_friction": Casting float to int
+[TU154M INFO]: [LUA]: loading	landing_gears
+[TU154M INFO]: [LUA]: loading	control_fails
+[TU154M INFO]: [LUA]: loading	fire_system
+[TU154M INFO]: [LUA]: loading	fire_panel
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	fire_logic
+[TU154M INFO]: [LUA]: loading	antiice
+[TU154M INFO]: [LUA]: loading	antiice_panel
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	antiice_logic
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/gauges/airbleed/cockpit_temp": Casting float to int
+[TU154M INFO]: [LUA]: loading	antiice_fails
+[TU154M INFO]: [LUA]: loading	msrp
+[TU154M INFO]: [LUA]: loading	msrp_panel
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	msrp_logic
+[TU154M INFO]: [LUA]: loading	brake_system
+[TU154M DEBUG]: [LUA]: "sim/weather/runway_friction": Casting float to int
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	sounds
+[TU154M INFO]: [LUA]: loading	cabin_sounds
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/vyzov_bp_ready": Casting float to int
+[TU154M DEBUG]: [LUA]: "sim/cockpit/radios/nav1_obs_degm": Casting float to int
+[TU154M DEBUG]: [LUA]: "sim/cockpit/radios/nav2_obs_degm": Casting float to int
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	cabin_sounds2
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	cockpit_sounds
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	engines_sound
+[TU154M DEBUG]: [LUA]: "tu154b2/custom/anim/deice2": Casting float to int
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	starter_cutout
+[TU154M INFO]: [LUA]: loading	crew_voices
+[TU154M INFO]: [LUA]: including	voice_tables.lua
+[TU154M INFO]: [LUA]: including	voice_func.lua
+[TU154M INFO]: [LUA]: including	voice_talk.lua
+[TU154M INFO]: [LUA]: including	chk_before_start.lua
+[TU154M INFO]: [LUA]: including	chk_before_taxi.lua
+[TU154M INFO]: [LUA]: including	chk_on_taxi.lua
+[TU154M INFO]: [LUA]: including	chk_before_lineup.lua
+[TU154M INFO]: [LUA]: including	chk_before_takeoff.lua
+[TU154M INFO]: [LUA]: including	chk_before_descend.lua
+[TU154M INFO]: [LUA]: including	chk_after_press_set.lua
+[TU154M INFO]: [LUA]: including	chk_before_base.lua
+[TU154M INFO]: [LUA]: including	chk_before_land.lua
+[TU154M INFO]: [LUA]: loading	touchdown
+[TU154M INFO]: [LUA]: loading	FE_top_sounds
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	right_panel_sounds
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	left_panel_sounds
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	door_sounds
+[TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
+[TU154M INFO]: [LUA]: loading	panels_2d
+[TU154M INFO]: [LUA]: loading	palette_2d
+[TU154M INFO]: [LUA]: loading	clickable
+[TU154M INFO]: [LUA]: loading	popupResizeButton
+[TU154M INFO]: [LUA]: loading	mouseFocusedZone
+[TU154M INFO]: [LUA]: loading	interactive
+[TU154M INFO]: [LUA]: loading	load_panel
+[TU154M INFO]: [LUA]: including	fuel_tables.lua
+[TU154M INFO]: [LUA]: loading	rectangle_ctr_fuel
+[TU154M INFO]: [LUA]: loading	absu_panel_2d
+[TU154M INFO]: [LUA]: loading	switch_lit
+[TU154M INFO]: [LUA]: loading	free_texture_lit
+[TU154M INFO]: [LUA]: loading	checklist_panel_2d
+[TU154M INFO]: [LUA]: loading	ground_panel
+[TU154M INFO]: [LUA]: loading	lever_hor
+[TU154M INFO]: [LUA]: loading	free_texture
+[TU154M INFO]: [LUA]: loading	failures_2d
+[TU154M INFO]: [LUA]: loading	fail_runtime
+[TU154M INFO]: [LUA]: loading	failures_draw
+[TU154M INFO]: [LUA]: including	dme_display.lua
+[TU154M INFO]: [LUA]: loading	dme_dist_text
+[TU154M INFO]: [LUA]: including	ils_display.lua
+[TU154M INFO]: [LUA]: loading	ils_freq_text
+[TU154M INFO]: [LUA]: including	vhf2_display.lua
+[TU154M INFO]: [LUA]: loading	vhf2_freq_text
+[TU154M INFO]: Scripts loading time: 0.8238
+[TU154M INFO]: Module loaded
+[TU154M INFO]: Initializing modules...
+[TU154M DEBUG]: [LUA]: Tiles created
+[TU154M DEBUG]: [LUA]: Tiles num: 15
+[TU154M INFO]: [LUA]: PA-3: Cache built for 3 legs, 0 total navaids
+[TU154M DEBUG]: [LUA]: PA-3 Config: VOR hidden
+[TU154M DEBUG]: [LUA]: PA-3 Config: RSBN shown
+[TU154M DEBUG]: [LUA]: PA-3 Config: NDB hidden
+[TU154M DEBUG]: [LUA]: PA-3 Config: APT hidden
+[TU154M DEBUG]: [LUA]: PA-3: Loading flight plan from file
+[TU154M DEBUG]: [LUA]: PA-3 Airport: Extracted from plan name: UWUU -> UUEE
+[TU154M INFO]: [LUA]: PA-3: Loaded 212 RSBN beacons from rsbn.dat
+[TU154M DEBUG]: [LUA]: PA-3 Airport: Found 7 navaids within 50NM
+[TU154M INFO]: [LUA]: PA-3 Airport: Cached departure UWUU (Ufa)
+[TU154M DEBUG]: [LUA]: PA-3 Airport: Found 15 navaids within 50NM
+[TU154M INFO]: [LUA]: PA-3 Airport: Cached arrival UUEE (Sheremetyevo Intl)
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'UWUU' as Airport to lat=54.558444976807, lon=55.863544464111
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'TILMU' as FIX to lat=54.822498321533, lon=54.18083190918
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'TILMU' as FIX to lat=54.822498321533, lon=54.18083190918
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'LEKBO' as FIX to lat=55.268890380859, lon=51.014999389648
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'LEKBO' as FIX to lat=55.268890380859, lon=51.014999389648
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'ORTIM' as FIX to lat=55.387500762939, lon=49.970275878906
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'ORTIM' as FIX to lat=55.387500762939, lon=49.970275878906
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'DIMGI' as FIX to lat=55.794445037842, lon=39.811111450195
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'DIMGI' as FIX to lat=55.794445037842, lon=39.811111450195
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'UUEE' as Airport to lat=55.984680175781, lon=37.353698730469
+[TU154M DEBUG]: [LUA]: PA-3: Leg 1 found 11 navaids
+[TU154M DEBUG]: [LUA]: PA-3: Leg 2 found 15 navaids
+[TU154M DEBUG]: [LUA]: PA-3: Leg 3 found 10 navaids
+[TU154M DEBUG]: [LUA]: PA-3: Leg 4 found 37 navaids
+[TU154M DEBUG]: [LUA]: PA-3: Leg 5 found 17 navaids
+[TU154M INFO]: [LUA]: PA-3: Cache built for 5 legs, 90 total navaids
+[TU154M DEBUG]: [LUA]: PA-3 Config: VOR hidden
+[TU154M DEBUG]: [LUA]: PA-3 Config: RSBN shown
+[TU154M DEBUG]: [LUA]: PA-3 Config: NDB hidden
+[TU154M DEBUG]: [LUA]: PA-3 Config: APT hidden
+[TU154M INFO]: Modules initialization done
+[TU154M DEBUG]: [LUA]: updating marks
+[TU154M DEBUG]: [LUA]: PA-3 Airport: Extracted from plan name: UWUU -> UUEE
+[TU154M DEBUG]: [LUA]: PA-3 Airport: Found 7 navaids within 50NM
+[TU154M INFO]: [LUA]: PA-3 Airport: Cached departure UWUU (Ufa)
+[TU154M DEBUG]: [LUA]: PA-3 Airport: Found 15 navaids within 50NM
+[TU154M INFO]: [LUA]: PA-3 Airport: Cached arrival UUEE (Sheremetyevo Intl)
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'UWUU' as Airport to lat=54.558444976807, lon=55.863544464111
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'TILMU' as FIX to lat=54.822498321533, lon=54.18083190918
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'TILMU' as FIX to lat=54.822498321533, lon=54.18083190918
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'LEKBO' as FIX to lat=55.268890380859, lon=51.014999389648
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'LEKBO' as FIX to lat=55.268890380859, lon=51.014999389648
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'ORTIM' as FIX to lat=55.387500762939, lon=49.970275878906
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'ORTIM' as FIX to lat=55.387500762939, lon=49.970275878906
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'DIMGI' as FIX to lat=55.794445037842, lon=39.811111450195
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'DIMGI' as FIX to lat=55.794445037842, lon=39.811111450195
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'UUEE' as Airport to lat=55.984680175781, lon=37.353698730469
+[TU154M DEBUG]: [LUA]: PA-3: Leg 1 found 11 navaids
+[TU154M DEBUG]: [LUA]: PA-3: Leg 2 found 15 navaids
+[TU154M DEBUG]: [LUA]: PA-3: Leg 3 found 10 navaids
+[TU154M DEBUG]: [LUA]: PA-3: Leg 4 found 37 navaids
+[TU154M DEBUG]: [LUA]: PA-3: Leg 5 found 17 navaids
+[TU154M INFO]: [LUA]: PA-3: Cache built for 5 legs, 90 total navaids
+[TU154M DEBUG]: [LUA]: PA-3 Config: VOR hidden
+[TU154M DEBUG]: [LUA]: PA-3 Config: RSBN shown
+[TU154M DEBUG]: [LUA]: PA-3 Config: NDB hidden
+[TU154M DEBUG]: [LUA]: PA-3 Config: APT hidden
+[TU154M DEBUG]: [LUA]: PA-3 Airport: Extracted from plan name: UWUU -> UUEE
+[TU154M DEBUG]: [LUA]: PA-3 Airport: Found 7 navaids within 50NM
+[TU154M INFO]: [LUA]: PA-3 Airport: Cached departure UWUU (Ufa)
+[TU154M DEBUG]: [LUA]: PA-3 Airport: Found 15 navaids within 50NM
+[TU154M INFO]: [LUA]: PA-3 Airport: Cached arrival UUEE (Sheremetyevo Intl)
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'UWUU' as Airport to lat=54.558444976807, lon=55.863544464111
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'TILMU' as FIX to lat=54.822498321533, lon=54.18083190918
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'TILMU' as FIX to lat=54.822498321533, lon=54.18083190918
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'LEKBO' as FIX to lat=55.268890380859, lon=51.014999389648
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'LEKBO' as FIX to lat=55.268890380859, lon=51.014999389648
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'ORTIM' as FIX to lat=55.387500762939, lon=49.970275878906
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'ORTIM' as FIX to lat=55.387500762939, lon=49.970275878906
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'DIMGI' as FIX to lat=55.794445037842, lon=39.811111450195
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'DIMGI' as FIX to lat=55.794445037842, lon=39.811111450195
+[TU154M DEBUG]: [LUA]: PA-3: Resolved 'UUEE' as Airport to lat=55.984680175781, lon=37.353698730469
+[TU154M DEBUG]: [LUA]: PA-3: Leg 1 found 11 navaids
+[TU154M DEBUG]: [LUA]: PA-3: Leg 2 found 15 navaids
+[TU154M DEBUG]: [LUA]: PA-3: Leg 3 found 10 navaids
+[TU154M DEBUG]: [LUA]: PA-3: Leg 4 found 37 navaids
+[TU154M DEBUG]: [LUA]: PA-3: Leg 5 found 17 navaids
+[TU154M INFO]: [LUA]: PA-3: Cache built for 5 legs, 90 total navaids
+[TU154M DEBUG]: [LUA]: PA-3 Config: VOR hidden
+[TU154M DEBUG]: [LUA]: PA-3 Config: RSBN shown
+[TU154M DEBUG]: [LUA]: PA-3 Config: NDB hidden
+[TU154M DEBUG]: [LUA]: PA-3 Config: APT hidden
+[TU154M INFO]: [LUA]: "crew_voices"	PREPARE
+[TU154M INFO]: [LUA]: "save_state"	error reading state file
+[TU154M INFO]: Disabling...
+[TU154M INFO]: [LUA]: "flight_controls"	flight controls released
+[TU154M INFO]: [LUA]: "rud_logic"	throttles released
+[TU154M INFO]: SASL plugin stopped...

@@ -1,0 +1,29 @@
+###########################
+  DO NOT MODIFY THIS FILE!
+YOU SHOULDN'T EVEN READ IT!
+###########################
+#popx1
+#popy1
+#1                       
+#2    PRESS LEFT CRSR    
+#3      TO CUSTOMIZE     
+#4       THIS PAGE       
+#Timezone1
+#Barounit0
+#GPSHobbs0
+#GPSTurnons0
+#LastLat46.684864044189
+#LastLon38.239765167236
+#RWYminlength1000
+#RWYsurface1
+#Fuelunit5
+#Primary1
+#RealGPS15
+#Timerstart0
+#Turnanti1
+#HSIinterf1
+#Volume50
+Ok, here's something
+to keep you entertained:
+Go to the STA 4 page
+and turn the left CRSR on

@@ -1,0 +1,16 @@
+A
+800
+OBJ
+
+TEXTURE aircraft_particles.png
+PARTICLE_SYSTEM aircraft_particles.pss
+
+POINT_COUNTS	0 0 0 0
+
+EMITTER		apu_effects	0 -0.05 17.2		0 0 0
+EMITTER		de_ice1		-9.936 -2.94227 1.80017		0 0 0
+EMITTER		de_ice2		10.1831 -3.1795 5.21665		0 0 0
+EMITTER d30_exhaust_1 -2.95 -1.71 13.3 180 0 0
+EMITTER d30_exhaust_2 0 -1.28 16.4 180 0 0
+EMITTER d30_exhaust_3 2.95 -1.71 13.3 180 0 0
+
