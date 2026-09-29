@@ -1,5 +1,6 @@
 AviTab.json|124
 KLNconfig.txt|653
+README.md|632
 airfoils/NACA 0009 (symmetrical).afl|25075
 airfoils/hstab.afl|22301
 airfoils/vstab.afl|24843
@@ -1351,13 +1352,13 @@ objects/cockpit_1.obj|14699191
 objects/cockpit_1.png|10212772
 objects/cockpit_1_NML.png|11659837
 objects/cockpit_1_RUS.obj|28528386
-objects/cockpit_1_RUS.png|9623118
+objects/cockpit_1_RUS.png|10396316
 objects/cockpit_1_RUS_LIT.png|106187
 objects/cockpit_1_RUS_NML.png|10445991
 objects/cockpit_1_RUS_nm.obj|18020135
 objects/cockpit_1_RUS_nm.png|9261685
 objects/cockpit_2.obj|1648278
-objects/cockpit_2.png|17004911
+objects/cockpit_2.png|17029111
 objects/cockpit_2_LIT.png|312604
 objects/cockpit_center_panel.obj|769841
 objects/cockpit_center_panel_RUS.obj|730682
@@ -1368,7 +1369,7 @@ objects/cockpit_center_panel_RUS_LIT.png|573507
 objects/cockpit_center_panel_RUS_NML.png|8762506
 objects/cockpit_center_panel_blend_RUS.obj|739977
 objects/cockpit_center_panel_v1_RUS.obj|1726132
-objects/cockpit_center_panel_v1_RUS.png|15118501
+objects/cockpit_center_panel_v1_RUS.png|19459660
 objects/cockpit_center_panel_v1_RUS_LIT.png|501812
 objects/cockpit_center_panel_v1_RUS_NML.png|9079065
 objects/cockpit_chairs.obj|5130148
@@ -1386,12 +1387,12 @@ objects/cockpit_front_panel_90th_RUS.obj|40
 objects/cockpit_front_panel_90th_RUS.png|17697453
 objects/cockpit_front_panel_90th_RUS_LIT.png|236912
 objects/cockpit_front_panel_RUS.obj|823468
-objects/cockpit_front_panel_RUS.png|10823952
+objects/cockpit_front_panel_RUS.png|15446017
 objects/cockpit_front_panel_RUS_LIT.png|229787
 objects/cockpit_front_panel_RUS_NML.png|6961442
 objects/cockpit_front_panel_blend_RUS.obj|461832
 objects/cockpit_front_panel_kontur_RUS.obj|925426
-objects/cockpit_front_panel_kontur_RUS.png|14424617
+objects/cockpit_front_panel_kontur_RUS.png|15381785
 objects/cockpit_front_panel_kontur_RUS_NML.png|8309948
 objects/cockpit_front_panel_notaws_RUS.obj|814077
 objects/cockpit_front_panel_notaws_RUS.png|17508412
