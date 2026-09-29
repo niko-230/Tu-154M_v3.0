@@ -1,5 +1,6 @@
 AviTab.json|1925732311
 KLNconfig.txt|1794991614
+README.md|3781988366
 airfoils/NACA 0009 (symmetrical).afl|3143184736
 airfoils/hstab.afl|1473583538
 airfoils/vstab.afl|3305887970
@@ -1351,13 +1352,13 @@ objects/cockpit_1.obj|875589475
 objects/cockpit_1.png|2779735781
 objects/cockpit_1_NML.png|4001591915
 objects/cockpit_1_RUS.obj|4258927679
-objects/cockpit_1_RUS.png|493379201
+objects/cockpit_1_RUS.png|976430686
 objects/cockpit_1_RUS_LIT.png|3268489700
 objects/cockpit_1_RUS_NML.png|677432332
 objects/cockpit_1_RUS_nm.obj|188988723
 objects/cockpit_1_RUS_nm.png|3170011948
 objects/cockpit_2.obj|2368475654
-objects/cockpit_2.png|4170032056
+objects/cockpit_2.png|1681218525
 objects/cockpit_2_LIT.png|4024883899
 objects/cockpit_center_panel.obj|3141048619
 objects/cockpit_center_panel_RUS.obj|808005209
@@ -1368,7 +1369,7 @@ objects/cockpit_center_panel_RUS_LIT.png|1082739747
 objects/cockpit_center_panel_RUS_NML.png|2323546716
 objects/cockpit_center_panel_blend_RUS.obj|2045510310
 objects/cockpit_center_panel_v1_RUS.obj|672741532
-objects/cockpit_center_panel_v1_RUS.png|2677852372
+objects/cockpit_center_panel_v1_RUS.png|472931702
 objects/cockpit_center_panel_v1_RUS_LIT.png|3547530027
 objects/cockpit_center_panel_v1_RUS_NML.png|3109606282
 objects/cockpit_chairs.obj|2172652798
@@ -1386,12 +1387,12 @@ objects/cockpit_front_panel_90th_RUS.obj|2902020399
 objects/cockpit_front_panel_90th_RUS.png|1012208730
 objects/cockpit_front_panel_90th_RUS_LIT.png|2731952455
 objects/cockpit_front_panel_RUS.obj|1235667955
-objects/cockpit_front_panel_RUS.png|1577642898
+objects/cockpit_front_panel_RUS.png|3523386760
 objects/cockpit_front_panel_RUS_LIT.png|3424891924
 objects/cockpit_front_panel_RUS_NML.png|1152811260
 objects/cockpit_front_panel_blend_RUS.obj|3023502867
 objects/cockpit_front_panel_kontur_RUS.obj|1867436924
-objects/cockpit_front_panel_kontur_RUS.png|1915356314
+objects/cockpit_front_panel_kontur_RUS.png|4178739598
 objects/cockpit_front_panel_kontur_RUS_NML.png|3697007778
 objects/cockpit_front_panel_notaws_RUS.obj|3300844533
 objects/cockpit_front_panel_notaws_RUS.png|2765440380
