@@ -1,6 +1,6 @@
 AviTab.json|124
 KLNconfig.txt|653
-README.md|632
+README.md|1486
 airfoils/NACA 0009 (symmetrical).afl|25075
 airfoils/hstab.afl|22301
 airfoils/vstab.afl|24843
