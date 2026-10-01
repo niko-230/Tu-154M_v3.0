@@ -1369,7 +1369,7 @@ objects/cockpit_center_panel_RUS_LIT.png|1082739747
 objects/cockpit_center_panel_RUS_NML.png|2323546716
 objects/cockpit_center_panel_blend_RUS.obj|2045510310
 objects/cockpit_center_panel_v1_RUS.obj|672741532
-objects/cockpit_center_panel_v1_RUS.png|472931702
+objects/cockpit_center_panel_v1_RUS.png|2983657794
 objects/cockpit_center_panel_v1_RUS_LIT.png|3547530027
 objects/cockpit_center_panel_v1_RUS_NML.png|3109606282
 objects/cockpit_chairs.obj|2172652798
